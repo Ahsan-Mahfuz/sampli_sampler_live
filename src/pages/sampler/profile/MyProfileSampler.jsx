@@ -14,7 +14,7 @@ import { useGetProfileApisQuery } from "../../../Redux/sampler/profileApis";
 import { Tabs } from "antd";
 import { CiStar } from "react-icons/ci";
 import { AiOutlineLike } from "react-icons/ai";
-import AllLikes from "./allLikes";
+import AllLikes from "./AllLikes";
 import AllComments from "./AllComments";
 
 const MyProfileSampler = () => {
