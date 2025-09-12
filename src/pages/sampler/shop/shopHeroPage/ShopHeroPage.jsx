@@ -2,7 +2,7 @@ import React from "react";
 import HeroPageImage from "../components/heroPageImage/HeroPageImage";
 import ShopCategory from "../components/shopCategory/ShopCategory";
 import BestSellers from "../components/bestSellers/BestSellers";
-import FlashSales from "../components/flashSales/flashSales";
+import FlashSales from "../components/flashSales/FlashSales";
 import FeaturedBrands from "../components/featuredBrands/FeaturedBrands";
 
 const ShopHeroPage = () => {
