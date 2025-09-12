@@ -4,7 +4,7 @@ import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { useCategorySectionApisQuery } from "../../../../../Redux/sampler/categoryApis";
 
-const CategoryCarousel = () => {
+const ShopCategory = () => {
   const carouselRef = useRef(null);
 
   const { data: getAllCategory, isLoading } = useCategorySectionApisQuery();
@@ -72,4 +72,4 @@ const CategoryCarousel = () => {
   );
 };
 
-export default CategoryCarousel;
+export default ShopCategory;
