@@ -1,0 +1,91 @@
+import React, { useState } from 'react';
+import { Select, DatePicker } from 'antd';
+import SalesCard from '../ui/SalesCard';
+import dollar from '../../assets/icons/dollar.svg';
+const { Option } = Select;
+const { RangePicker } = DatePicker;
+
+function CampaignAnalytics() {
+  const [selectedOption, setSelectedOption] = useState('This Week');
+  const [customDateRange, setCustomDateRange] = useState(null);
+  console.log(customDateRange)
+  const number = 3434;
+  const datas = [
+    {
+      title: 'Total Revenue',
+      value: (
+        <div className="flex items-center">
+          <small className="text-[#6D7486] flex items-center gap-2">
+            <img className="w-4 h-4" src={dollar} alt="$" />
+          </small>
+          {number.toLocaleString('en-US', {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          })}
+        </div>
+      ),
+      change: '+30%',
+      orders: 342,
+      avgOrderValue: '$340',
+    },
+    {
+      title: 'Total View',
+      value: 334,
+      change: '+30%',
+      conversionRate: '2.76%',
+      avgTimeOnProfile: '4:32',
+    },
+    {
+      title: 'Orders',
+      value: 34,
+      change: '+30%',
+      checkoutRate: '42%',
+      cartAbandonment: '42%',
+    },
+  ];
+  const handleChange = (value) => {
+    setSelectedOption(value);
+    if (value !== 'Custom Date Range') {
+      setCustomDateRange(null);
+    }
+  };
+
+  const handleDateChange = (dates) => {
+    setCustomDateRange(dates);
+    console.log('Selected Date Range:', dates);
+  };
+
+  return (
+    <div className="w-full">
+      <div className="flex p-2 rounded-md justify-between items-center">
+        <h1 className="text-2xl">Sales analytics</h1>
+        <div className="flex items-center gap-4">
+          <Select
+            value={selectedOption}
+            style={{ width: 160 }}
+            onChange={handleChange}
+          >
+            <Option value="This Week">This Week</Option>
+            <Option value="Last Week">Last Week</Option>
+            <Option value="This Month">This Month</Option>
+            <Option value="Last Month">Last Month</Option>
+            <Option value="Custom Date Range">Custom Date Range</Option>
+          </Select>
+
+          {/* Show Date Picker when "Custom Date Range" is selected */}
+          {selectedOption === 'Custom Date Range' && (
+            <RangePicker onChange={handleDateChange} />
+          )}
+        </div>
+      </div>
+
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+        {datas.map((data) => (
+          <SalesCard key={data.title} data={data} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default CampaignAnalytics;
